@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>王胜顺，加油吃泡面！</title>
+    <title>王胜顺 加油吃泡面</title>
     <style>
         body {
             display: flex;
@@ -18,57 +18,66 @@
             font-size: 24px;
             margin-bottom: 20px;
         }
-        .stick-figure {
+        .person {
             width: 50px;
             height: 100px;
+            background-color: #f00;
             position: relative;
         }
         .head {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background-color: #ffcc00;
+            width: 40px;
+            height: 40px;
+            background-color: #ffcc66;
+            border-radius: 20px;
             position: absolute;
-            top: -30px;
-            left: 10px;
-        }
-        .body {
-            width: 10px;
-            height: 60px;
-            background-color: #000;
-            position: absolute;
-            top: 0;
-            left: 20px;
+            top: -40px;
+            left: 5px;
         }
         .arms {
-            width: 50px;
+            width: 70px;
             height: 10px;
-            background-color: #000;
+            background-color: #f00;
             position: absolute;
             top: 20px;
-            left: 0;
+            left: -10px;
         }
         .legs {
             width: 10px;
             height: 50px;
-            background-color: #000;
+            background-color: #f00;
             position: absolute;
-            top: 60px;
+            bottom: 0;
             left: 10px;
         }
-        .legs.right {
-            left: 30px;
+        .legs::after {
+            content: '';
+            width: 10px;
+            height: 50px;
+            background-color: #f00;
+            position: absolute;
+            left: 25px;
         }
     </style>
 </head>
 <body>
-    <div class="message">王胜顺，加油吃泡面！</div>
-    <div class="stick-figure">
+    <div class="message" id="dynamicMessage">王胜顺，加油吃泡面！</div>
+    <div class="person">
         <div class="head"></div>
-        <div class="body"></div>
         <div class="arms"></div>
         <div class="legs"></div>
-        <div class="legs right"></div>
     </div>
+    <button onclick="changeMessage()">点击我</button>
+
+    <script>
+        function changeMessage() {
+            const messages = [
+                "王胜顺，加油吃泡面！",
+                "继续努力，泡面等着你！",
+                "生活就像泡面，简单又美味！"
+            ];
+            const randomIndex = Math.floor(Math.random() * messages.length);
+            document.getElementById('dynamicMessage').innerText = messages[randomIndex];
+        }
+    </script>
 </body>
 </html>
