@@ -3,27 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>老王吃泡面动画</title>
+    <title>吃泡面小游戏</title>
     <style>
         body {
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
             background-color: #f0f0f0;
             margin: 0;
-        }
-        .message {
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 20px;
+            font-family: Arial, sans-serif;
         }
         .container {
             position: relative;
             width: 200px;
-            height: 200px;
+            height: 250px;
             text-align: center;
+        }
+        /* 显示分数 */
+        .score {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #ff5722;
         }
         /* 小人身体 */
         .person {
@@ -77,34 +79,48 @@
             top: 15px;
             left: 50%;
             transform-origin: top center;
-            transform: rotate(-20deg);
             width: 4px;
             height: 60px;
             background-color: #8b4513;
-            animation: eatNoodles 0.8s infinite alternate;
+            animation: none;
         }
-        /* 夸张的吃泡面动画 */
+        /* 吃泡面动画 */
         @keyframes eatNoodles {
-            0% {
-                transform: rotate(-20deg) translateY(0);
-            }
-            100% {
-                transform: rotate(10deg) translateY(-25px);
-            }
+            0% { transform: rotate(-20deg) translateY(0); }
+            100% { transform: rotate(10deg) translateY(-25px); }
         }
     </style>
 </head>
 <body>
-    <div class="message">加油努力拉屎要用力，加油老王</div>
-    <div class="container">
+    <div class="container" onclick="eatNoodles()">
+        <div class="score">得分: <span id="score">0</span></div>
         <div class="person">
             <div class="head">
                 <div class="eye left"></div>
                 <div class="eye right"></div>
             </div>
-            <div class="chopsticks"></div>
+            <div class="chopsticks" id="chopsticks"></div>
             <div class="bowl"></div>
         </div>
     </div>
+    <script>
+        let score = 0;
+        let chopsticks = document.getElementById("chopsticks");
+
+        function eatNoodles() {
+            score++;
+            document.getElementById("score").innerText = score;
+            chopsticks.style.animation = "eatNoodles 0.4s ease-out";
+
+            chopsticks.addEventListener("animationend", () => {
+                chopsticks.style.animation = "none"; // 重置动画
+            });
+        }
+
+        // 游戏结束的提示
+        setTimeout(() => {
+            alert("游戏结束！最终得分: " + score);
+        }, 15000); // 游戏持续15秒
+    </script>
 </body>
 </html>
