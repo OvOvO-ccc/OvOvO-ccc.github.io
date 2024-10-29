@@ -3,86 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>王胜顺 加油吃泡面</title>
+    <title>小人吃泡面动画</title>
     <style>
         body {
             display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
+            align-items: center;
             height: 100vh;
             background-color: #f0f0f0;
-            font-family: Arial, sans-serif;
+            margin: 0;
         }
-        .message {
-            font-size: 24px;
-            margin-bottom: 20px;
+        .container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            text-align: center;
         }
+        /* 小人身体 */
         .person {
+            position: relative;
             width: 50px;
             height: 100px;
-            background-color: #f00;
-            position: relative;
-            animation: jump 0.5s infinite alternate;
+            background-color: #ffcc99;
+            border-radius: 25px;
+            margin: 0 auto;
         }
+        /* 小人头 */
         .head {
-            width: 40px;
-            height: 40px;
-            background-color: #ffcc66;
-            border-radius: 20px;
             position: absolute;
-            top: -40px;
-            left: 5px;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            background-color: #ffe0bd;
+            border-radius: 50%;
         }
-        .arms {
-            width: 70px;
-            height: 10px;
-            background-color: #f00;
+        /* 眼睛 */
+        .eye {
             position: absolute;
             top: 20px;
-            left: -10px;
-        }
-        .legs {
             width: 10px;
-            height: 50px;
-            background-color: #f00;
-            position: absolute;
-            bottom: 0;
-            left: 10px;
+            height: 10px;
+            background-color: #333;
+            border-radius: 50%;
         }
-        .legs::after {
-            content: '';
-            width: 10px;
-            height: 50px;
-            background-color: #f00;
-            position: absolute;
-            left: 25px;
+        .eye.left {
+            left: 15px;
         }
-        @keyframes jump {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-20px); }
+        .eye.right {
+            right: 15px;
+        }
+        /* 泡面碗 */
+        .bowl {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 30px;
+            background-color: #ffcc00;
+            border-radius: 0 0 40px 40px;
+        }
+        /* 筷子 */
+        .chopsticks {
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform-origin: top center;
+            transform: rotate(-10deg);
+            width: 4px;
+            height: 60px;
+            background-color: #8b4513;
+            animation: eatNoodles 1s infinite alternate;
+        }
+        /* 吃泡面动画 */
+        @keyframes eatNoodles {
+            0% {
+                transform: rotate(-10deg) translateY(0);
+            }
+            100% {
+                transform: rotate(-5deg) translateY(-10px);
+            }
         }
     </style>
 </head>
 <body>
-    <div class="message" id="dynamicMessage">王胜顺，加油吃泡面！</div>
-    <div class="person">
-        <div class="head"></div>
-        <div class="arms"></div>
-        <div class="legs"></div>
+    <div class="container">
+        <div class="person">
+            <div class="head">
+                <div class="eye left"></div>
+                <div class="eye right"></div>
+            </div>
+            <div class="chopsticks"></div>
+            <div class="bowl"></div>
+        </div>
     </div>
-    <button onclick="changeMessage()">点击我</button>
-
-    <script>
-        function changeMessage() {
-            const messages = [
-                "王胜顺，加油吃泡面！",
-                "继续努力，泡面等着你！",
-                "生活就像泡面，简单又美味！"
-            ];
-            const randomIndex = Math.floor(Math.random() * messages.length);
-            document.getElementById('dynamicMessage').innerText = messages[randomIndex];
-        }
-    </script>
 </body>
 </html>
