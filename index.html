@@ -3,15 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>小人吃泡面动画</title>
+    <title>老王吃泡面动画</title>
     <style>
         body {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
             background-color: #f0f0f0;
             margin: 0;
+        }
+        .message {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
         }
         .container {
             position: relative;
@@ -71,24 +77,25 @@
             top: 15px;
             left: 50%;
             transform-origin: top center;
-            transform: rotate(-10deg);
+            transform: rotate(-20deg);
             width: 4px;
             height: 60px;
             background-color: #8b4513;
-            animation: eatNoodles 1s infinite alternate;
+            animation: eatNoodles 0.8s infinite alternate;
         }
-        /* 吃泡面动画 */
+        /* 夸张的吃泡面动画 */
         @keyframes eatNoodles {
             0% {
-                transform: rotate(-10deg) translateY(0);
+                transform: rotate(-20deg) translateY(0);
             }
             100% {
-                transform: rotate(-5deg) translateY(-10px);
+                transform: rotate(10deg) translateY(-25px);
             }
         }
     </style>
 </head>
 <body>
+    <div class="message">加油努力拉屎要用力，加油老王</div>
     <div class="container">
         <div class="person">
             <div class="head">
