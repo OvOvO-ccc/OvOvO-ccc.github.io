@@ -23,6 +23,7 @@
             height: 100px;
             background-color: #f00;
             position: relative;
+            animation: jump 0.5s infinite alternate;
         }
         .head {
             width: 40px;
@@ -56,6 +57,10 @@
             background-color: #f00;
             position: absolute;
             left: 25px;
+        }
+        @keyframes jump {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-20px); }
         }
     </style>
 </head>
